@@ -18,7 +18,7 @@ export default function Register() {
     return (
         <>
             <AuthNavbar />
-            <div className="flex justify-center items-center min-h-screen md:pt-20 pt-12 pb-12 bg-[#FFFDF3]">
+            <div className="flex justify-center items-center min-h-screen md:pt-20 pt-32 pb-12 bg-[#FFFDF3]">
                 <FormLayout onSubmit={formSubmit} title="Pendaftaran Akun" description="Yuk, lanjutin belajarmu di videobelajar.">
                     <div className="space-y-2 pb-8">
                         <TextInput required={true} label="Nama Lengkap" name="name" />
@@ -26,7 +26,7 @@ export default function Register() {
                         <div className="space-y-2">
                             <label className="text-[#333333AD]" htmlFor="phone">No. Hp <span className="text-red-500"> *</span></label>
                             <div className="flex items-center gap-x-4">
-                                <PhoneInput required={true} name="phone" className="w-1/3" />
+                                <PhoneInput required={true} name="phone" className="md:w-1/3 w-1/2" />
                                 <TextInput required={true} name="email" className="w-full" />
                             </div>
                         </div>
