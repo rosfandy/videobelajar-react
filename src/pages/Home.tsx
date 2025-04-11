@@ -24,7 +24,7 @@ export default function Home() {
                             interaktif yang akan meningkatkan pemahaman Anda.
                         </p>
                         <div className="flex mt-4">
-                            <Button className='px-8 py-3 ' text='Temukan Video Course untuk Dipelajari!' variant='success' />
+                            <Button className='md:px-8 py-3 ' text='Temukan Video Course untuk Dipelajari!' variant='success' />
                         </div>
                     </div>
                 </div>

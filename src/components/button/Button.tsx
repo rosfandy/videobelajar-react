@@ -11,7 +11,7 @@ interface ButtonInterface {
     onClick?: () => void
 }
 
-const Variants = cva('cursor-pointer w-full text-center py-2 px-4 rounded-xl font-bold transition-all md:text-base text-xs', {
+const Variants = cva('cursor-pointer w-full text-center py-2 px-4 rounded-xl font-bold transition-all md:text-base text-base', {
     variants: {
         variant: {
             warning: 'bg-[#FFBD3A] outline-[#FFBD3A] text-white hover:bg-[#e8ac35]',
