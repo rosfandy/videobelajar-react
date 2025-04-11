@@ -5,6 +5,23 @@ import { cardItem } from '../cardItem';
 import { MainLayout } from '../layout/Main';
 import '@/index.css'
 export default function Home() {
+    const categoryItem = [
+        {
+            name: 'Semua Kelas',
+        },
+        {
+            name: 'Pemasaran'
+        },
+        {
+            name: 'Desain'
+        },
+        {
+            name: 'Pengembangan Diri'
+        },
+        {
+            name: 'Bisnis'
+        }
+    ]
     return (
         <>
             <MainLayout>
@@ -36,26 +53,12 @@ export default function Home() {
 
                 <div id="category"
                     className="flex items-center lg:gap-x-12 md:gap-x-8 gap-x-12 font-semibold text-[#333333AD] overflow-x-auto">
-                    <div className="class-active category-item cursor-pointer">
-                        <div className="inline-block whitespace-nowrap">Semua Kelas</div>
-                        <div className="bar mt-1 h-1"></div>
-                    </div>
-                    <div className="category-item cursor-pointer">
-                        <div className="">Pemasaran</div>
-                        <div className="bar mt-1 h-1"></div>
-                    </div>
-                    <div className="category-item cursor-pointer">
-                        <div className="">Desain</div>
-                        <div className="bar mt-1 h-1"></div>
-                    </div>
-                    <div className="category-item cursor-pointer">
-                        <div className="inline-block whitespace-nowrap">Pengembangan Diri</div>
-                        <div className="bar mt-1 h-1"></div>
-                    </div>
-                    <div className="category-item cursor-pointer">
-                        <div className="">Bisnis</div>
-                        <div className="bar mt-1 h-1"></div>
-                    </div>
+                    {categoryItem.map((item, index) => (
+                        <div key={index} className="category-item cursor-pointer">
+                            <div className="">{item.name}</div>
+                            <div className="bar mt-1 h-1"></div>
+                        </div>
+                    ))}
                 </div>
 
                 <div id="card-section" className="flex flex-wrap lg:gap-y-8 gap-y-4 justify-center gap-x-10 mt-4">
