@@ -5,3 +5,19 @@
 body {
   @apply font-lato;
 }
+
+.class-active {
+    color: #F64920;
+}
+.class-active .bar {
+    background-color: #F64920;
+    width: 40px;
+    height: 6px;
+    border-radius: 8px;
+}
+.category-item{
+    transition: all 0.2s ease-in-out;
+}
+.category-item:hover {
+    color: #F64920;
+}

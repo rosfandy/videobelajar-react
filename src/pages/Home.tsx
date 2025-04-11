@@ -3,12 +3,12 @@ import { Button } from '../components/button/Button';
 import { Card } from '../components/card/Card';
 import { cardItem } from '../cardItem';
 import { MainLayout } from '../layout/Main';
-
+import '@/index.css'
 export default function Home() {
     return (
         <>
             <MainLayout>
-                <div id="content" className="py-12">
+                <div id="content" className="pt-12">
                     <div id="banner"
                         style={{ backgroundImage: `url(${banner})` }}
                         className="bg-cover bg-center w-full rounded-md text-white flex md:p-12 px-6 py-8 flex-col items-center justify-center text-center"
@@ -26,6 +26,35 @@ export default function Home() {
                         <div className="flex mt-4">
                             <Button className='px-8 py-3 ' text='Temukan Video Course untuk Dipelajari!' variant='success' />
                         </div>
+                    </div>
+                </div>
+
+                <div id="title" className="my-12">
+                    <h1 className="font-bold md:text-[32px] text-[24px]">Koleksi Video Pembelajaran Unggulan</h1>
+                    <p className="text-[#333333AD]">Jelajahi Dunia Pengetahuan Melalui Pilihan Kami!</p>
+                </div>
+
+                <div id="category"
+                    className="flex items-center lg:gap-x-12 md:gap-x-8 gap-x-12 font-semibold text-[#333333AD] overflow-x-auto">
+                    <div className="class-active category-item cursor-pointer">
+                        <div className="inline-block whitespace-nowrap">Semua Kelas</div>
+                        <div className="bar mt-1 h-1"></div>
+                    </div>
+                    <div className="category-item cursor-pointer">
+                        <div className="">Pemasaran</div>
+                        <div className="bar mt-1 h-1"></div>
+                    </div>
+                    <div className="category-item cursor-pointer">
+                        <div className="">Desain</div>
+                        <div className="bar mt-1 h-1"></div>
+                    </div>
+                    <div className="category-item cursor-pointer">
+                        <div className="inline-block whitespace-nowrap">Pengembangan Diri</div>
+                        <div className="bar mt-1 h-1"></div>
+                    </div>
+                    <div className="category-item cursor-pointer">
+                        <div className="">Bisnis</div>
+                        <div className="bar mt-1 h-1"></div>
                     </div>
                 </div>
 
