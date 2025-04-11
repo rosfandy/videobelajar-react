@@ -29,7 +29,7 @@ export default function Home() {
                     </div>
                 </div>
 
-                <div id="card-section" className="flex flex-wrap lg:gap-y-8 gap-y-4 justify-center gap-x-10 mt-4 pb-24">
+                <div id="card-section" className="flex flex-wrap lg:gap-y-8 gap-y-4 justify-center gap-x-10 mt-4">
                     {cardItem.map((item, index) => (
                         <Card
                             key={index}
@@ -59,14 +59,17 @@ export default function Home() {
                                 spesial dari
                                 program-program terbaik hariesok.id</p>
                         </div>
-                        <div className="md:w-fit w-full px-4 py-2 rounded-xl mt-10">
-                            <div className="flex gap-x-2 bg-white rounded-xl px-6 py-2">
+                        <div className="flex flex-col gap-y-4 md:w-fit w-full px-4 py-2 rounded-xl mt-10">
+                            <div className="flex md:flex-row flex-col gap-x-2 bg-white rounded-xl px-6 py-2">
                                 <input type="text"
                                     className="outline-none md:text-start text-center text-black md:w-[350px]" name=""
                                     id="" placeholder="Masukkan Emailmu" />
-                                <div>
+                                <div className='md:inline hidden' >
                                     <Button text='Subscribe' variant="warning" />
                                 </div>
+                            </div>
+                            <div className='md:hidden inline'>
+                                <Button text='Subscribe' variant="warning" />
                             </div>
                         </div>
                     </div>

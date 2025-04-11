@@ -23,9 +23,11 @@ export const NavbarLayout = (props: Props) => {
             </div>
 
             {/* Mobile */}
-            <div onClick={() => setDropdown(!isDropdown)} className="md:hidden inline">
-                <HiBars3 size={24} />
-            </div>
+            {children &&
+                <div onClick={() => setDropdown(!isDropdown)} className="md:hidden inline">
+                    <HiBars3 size={24} />
+                </div>
+            }
             <div className="md:hidden inline absolute right-0 top-[70px] w-full z-[99] shadow-lg rounded-b bg-white">
                 {children}
             </div>
