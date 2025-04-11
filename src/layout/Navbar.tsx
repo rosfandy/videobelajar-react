@@ -1,4 +1,4 @@
-import logo from '@/assets/logo.jpg'
+import logo from '@/assets/Logo.jpg'
 import { HiBars3 } from "react-icons/hi2";
 import { Link } from 'react-router-dom'
 
