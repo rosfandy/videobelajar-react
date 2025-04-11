@@ -1,0 +1,26 @@
+.star-container {
+    position: relative;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+}
+
+.star-full,
+.star-half,
+.star-empty {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 1em;
+}
+
+.star-half::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: white; /* potong setengah kanan */
+    z-index: 1;
+}
