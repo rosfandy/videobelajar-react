@@ -12,7 +12,7 @@ export default function Register() {
     const navigate = useNavigate();
 
     const formSubmit = (e: any) => {
-
+        console.log(e)
     }
 
     return (

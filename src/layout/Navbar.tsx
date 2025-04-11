@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 interface Props {
     isDropdown?: boolean,
     setDropdown?: any
-    children: any
+    children?: any
 }
 
 export const NavbarLayout = (props: Props) => {

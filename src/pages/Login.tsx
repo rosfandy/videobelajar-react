@@ -11,7 +11,7 @@ export default function Login() {
     const navigate = useNavigate();
 
     const formSubmit = (e: any) => {
-
+        console.log(e)
     }
 
     return (
