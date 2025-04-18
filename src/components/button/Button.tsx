@@ -8,7 +8,8 @@ interface ButtonInterface {
     className?: string,
     type?: HTMLButtonElement['type'],
     icon?: ReactNode,
-    onClick?: () => void
+    onClick?: () => void,
+    isLoading?: boolean
 }
 
 const Variants = cva('cursor-pointer w-full text-center py-2 px-4 rounded-xl font-bold transition-all md:text-base text-base', {
@@ -26,11 +27,11 @@ const Variants = cva('cursor-pointer w-full text-center py-2 px-4 rounded-xl fon
 })
 
 export const Button = (props: ButtonInterface) => {
-    const { text, variant, className, type = 'button', icon: Icon, onClick } = props
+    const { text, variant, className, type = 'button', icon: Icon, onClick, isLoading = false } = props
     return (
-        <button onClick={onClick} type={type} className={cn(Variants({ variant }), className, 'flex items-center gap-x-2 justify-center')}>
+        <button disabled={isLoading} onClick={onClick} type={type} className={cn(Variants({ variant }), className, 'flex items-center gap-x-2 justify-center')}>
             {Icon && Icon}
-            <div>{text}</div>
+            <div>{isLoading ? 'Loading...' : text}</div>
         </button>
     )
 }

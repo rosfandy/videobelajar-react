@@ -3,25 +3,34 @@ import { Button } from '../components/button/Button';
 import { Card } from '../components/card/Card';
 import { cardItem } from '../cardItem';
 import { MainLayout } from '../layout/Main';
-import '@/index.css'
+import '../index.css'
+import { useState } from 'react';
+
 export default function Home() {
     const categoryItem = [
         {
             name: 'Semua Kelas',
+            isActive: true
         },
         {
-            name: 'Pemasaran'
+            name: 'Pemasaran',
+            isActive: false
         },
         {
-            name: 'Desain'
+            name: 'Desain',
+            isActive: false
         },
         {
-            name: 'Pengembangan Diri'
+            name: 'Pengembangan Diri',
+            isActive: false
         },
         {
-            name: 'Bisnis'
+            name: 'Bisnis',
+            isActive: false
         }
     ]
+    const [category, _] = useState(categoryItem[0])
+
     return (
         <>
             <MainLayout>
@@ -54,7 +63,7 @@ export default function Home() {
                 <div id="category"
                     className="flex items-center lg:gap-x-12 md:gap-x-8 gap-x-12 font-semibold text-[#333333AD] overflow-x-auto">
                     {categoryItem.map((item, index) => (
-                        <div key={index} className="category-item cursor-pointer">
+                        <div key={index} className={`category-item cursor-pointer ${category.name === item.name ? 'class-active' : ''}`}>
                             <div className="">{item.name}</div>
                             <div className="bar mt-1 h-1"></div>
                         </div>

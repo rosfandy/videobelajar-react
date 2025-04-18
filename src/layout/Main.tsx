@@ -2,12 +2,16 @@ import { Footer } from "../components/footer/Footer"
 import { MainNavbar } from "../components/navbar/MainNavbar"
 
 export const MainLayout = (props: any) => {
-    const { children } = props
+    const { children } = props;
     return (
-        <>
+        <div className="flex flex-col min-h-screen bg-[#FFFDF3]">
             <MainNavbar />
-            <div className="lg:px-[40px] xl:px-[120px] md:px-12 px-4 min-h-screen pt-20 bg-[#FFFDF3]">{children}</div>
+
+            <main className="flex-grow lg:px-[40px] xl:px-[120px] md:px-12 px-4 pt-20">
+                {children}
+            </main>
+
             <Footer />
-        </>
-    )
-}
+        </div>
+    );
+};

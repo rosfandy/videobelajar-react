@@ -9,7 +9,7 @@ export const Footer = () => {
     return (
         <div className="border border-[#3A35411F] p-8 shadow bg-white lg:px-[40px] xl:px-[120px] md:px-12 px-4">
             <div className="flex lg:flex-row flex-col justify-between lg:pb-20 pb-8 border-b border-[#3A35411F]">
-                <div className="lg:w-1/5">
+                <div className="lg:w-1/4">
                     <img src={logo} alt="Logo" />
                     <div className="flex flex-col gap-y-2 mt-8">
                         <h3 className="font-bold text-[18px]">
@@ -22,7 +22,7 @@ export const Footer = () => {
                     </div>
                 </div>
 
-                <div className="flex lg:flex-row flex-col gap-x-24 lg:w-1/3">
+                <div className="flex lg:flex-row flex-col gap-x-12 ">
                     {/* Kategori */}
                     <div className="lg:block hidden">
                         <h3 className="font-bold mb-4">Kategori</h3>
