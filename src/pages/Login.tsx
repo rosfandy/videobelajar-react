@@ -7,6 +7,7 @@ import { FormLayout } from "../layout/Form";
 import { Divider } from "../components/divider/Divider";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { GetRequest } from "../utils/request";
 
 export default function Login() {
     const [success, setSuccess] = useState('')
@@ -14,16 +15,15 @@ export default function Login() {
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate();
     const LoginRequest = async (payload: any) => {
-        const storedUser = localStorage.getItem('user');
+        const storedUsers = await GetRequest('/users');
+        const user = storedUsers?.data?.find((user: any) => user.email === payload.email);
 
-        if (!storedUser) {
+        if (!user) {
             return {
                 status: 400,
                 data: { message: 'Akun tidak terdaftar' },
             };
         }
-
-        const user = JSON.parse(storedUser);
 
         const isValid =
             user.email === payload.email && user.password === payload.password;
@@ -31,7 +31,7 @@ export default function Login() {
         return isValid
             ? {
                 status: 200,
-                data: { access_token: 'token' },
+                data: { access_token: user.id },
             }
             : {
                 status: 400,
