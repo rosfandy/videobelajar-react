@@ -8,24 +8,26 @@ import { Divider } from "../components/divider/Divider";
 import { useNavigate } from "react-router-dom";
 import { PhoneInput } from "../components/input/default/PhoneInput";
 import { useState } from "react";
+import { PostRequest } from "../utils/request";
 
 export default function Register() {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false)
     const [success, setSuccess] = useState('')
 
-    const formSubmit = (e: any) => {
+    const formSubmit = async (e: any) => {
         e.preventDefault();
         setLoading(true)
         const formData = new FormData(e.target);
         const payload = Object.fromEntries(formData);
-        localStorage.setItem('user', JSON.stringify(payload));
-        setLoading(false)
-        setSuccess("Success Register!")
 
-        setTimeout(() => {
+        const res = await PostRequest('/users', payload);
+
+        if (res?.status == 201) {
+            setLoading(false)
+            setSuccess("Success Register!")
             navigate('/login');
-        }, 1000)
+        }
     }
 
     return (
@@ -40,8 +42,8 @@ export default function Register() {
                         <div className="space-y-2">
                             <label className="text-[#333333AD]" htmlFor="phone">No. Hp <span className="text-red-500"> *</span></label>
                             <div className="flex items-center gap-x-4">
-                                <PhoneInput required={true} name="phone_region" className="md:w-1/3 w-1/2" />
-                                <TextInput type="number" required={true} name="phone_number" className="w-full" />
+                                <PhoneInput required={true} name="telp_code" className="md:w-1/3 w-1/2" />
+                                <TextInput type="number" required={true} name="telp" className="w-full" />
                             </div>
                         </div>
                         <PasswordInput required={true} label="Kata Sandi" name="password" />

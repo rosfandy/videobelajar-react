@@ -10,7 +10,7 @@ interface TextInputProps {
     required?: boolean
 }
 
-export const PasswordInput = (props: TextInputProps) => {
+export const PasswordInput = (props: TextInputProps) => {   
     const { label, name, required = false } = props
     const [showPw, setShowPw] = useState(false)
 

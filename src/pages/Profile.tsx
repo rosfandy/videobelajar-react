@@ -6,16 +6,18 @@ import { Divider } from "../components/divider/Divider";
 import { TextInput } from "../components/input/floating-label/TextInput";
 import { Button } from "../components/button/Button";
 import { SelectInput } from "../components/input/floating-label/SelectInput";
+import { GetRequest, PutRequest } from "../utils/request";
 
 export default function Profile() {
     const [data, setData] = useState<any>({});
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [success, setSuccess] = useState("");
+    const token = sessionStorage.getItem('token');
 
     const fetchData = async () => {
         setIsLoading(true);
-        const data = localStorage.getItem("user");
-        if (data) setData(JSON.parse(data));
+        const res = await GetRequest(`/users/${token}`);
+        if (res.status == 200) setData(res?.data);
         setIsLoading(false);
     };
 
@@ -23,23 +25,16 @@ export default function Profile() {
         fetchData();
     }, []);
 
-    const submitForm = (e: any) => {
+    const submitForm = async (e: any) => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const payload = Object.fromEntries(formData);
-
-        const existingData = localStorage.getItem("user");
-        if (existingData) {
-            const user = JSON.parse(existingData);
-            const updatedUser = { ...user, ...payload };
-            localStorage.setItem("user", JSON.stringify(updatedUser));
-            setSuccess("Profil berhasil diubah!");
-            setTimeout(() => {
-                setSuccess("");
-            }, 1000)
-        }
+        const res = await PutRequest(`/users/${token}`, payload);
+        if (res.status == 200) setSuccess("Profil berhasil diubah");
+        setTimeout(() => {
+            setSuccess("");
+        }, 1000);
     };
-
 
     return (
         <MainLayout>
@@ -76,7 +71,7 @@ export default function Profile() {
                             <div className="flex md:items-start items-center gap-x-4">
                                 <img
                                     className="md:w-auto w-auto md:h-[92px] h-[60px] rounded-md"
-                                    src="https://i.imgur.com/LDOO4Qs.jpeg"
+                                    src={data?.avatar || 'https://www.w3schools.com/howto/img_avatar.png'}
                                     alt=""
                                 />
                                 <div className="-space-y-1">
@@ -98,10 +93,10 @@ export default function Profile() {
                                     </div>
                                     <div className="flex xl:w-1/2 w-full gap-x-4">
                                         <div className="xl:w-1/4 w-1/2">
-                                            <SelectInput name="phone_region" options={[{ label: "+62", value: "id" }]} value="id" />
+                                            <SelectInput name="telp_code" options={[{ label: "+62", value: "id" }]} value="id" />
                                         </div>
                                         <div className="w-full">
-                                            <TextInput label="No. Hp" name="phone_number" value={data.phone_number} />
+                                            <TextInput label="No. Hp" name="telp" value={data.telp} />
                                         </div>
                                     </div>
                                 </div>
