@@ -9,6 +9,7 @@ interface TextInputProps {
     className?: string,
     type?: string,
     required?: boolean
+    value?: string
 }
 
 export const TextInput = (props: TextInputProps) => {

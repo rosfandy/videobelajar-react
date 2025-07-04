@@ -9,7 +9,8 @@ interface TextInputProps {
     placeholder?: string,
     name?: string,
     className?: string,
-    required?: boolean
+    required?: boolean,
+    value?: string
 }
 
 const countryOptions = [

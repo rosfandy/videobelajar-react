@@ -6,7 +6,8 @@ import { Divider } from "../components/divider/Divider";
 import { TextInput } from "../components/input/floating-label/TextInput";
 import { Button } from "../components/button/Button";
 import { SelectInput } from "../components/input/floating-label/SelectInput";
-import { GetRequest, PutRequest } from "../utils/request";
+import { GetRequest, PutRequest } from "../services/api";
+import ProfileForm from "../components/form/Form";
 
 export default function Profile() {
     const [data, setData] = useState<any>({});
@@ -61,53 +62,12 @@ export default function Profile() {
                 </div>
 
                 <div className="w-full bg-white border h-fit p-8 border-[#3A35411F] rounded-md">
-                    {success && <p className="text-green-500 pb-4">{success}</p>}
-                    {isLoading ? (
-                        <div className="flex justify-center items-center py-20 text-gray-500 text-lg">
-                            Loading...
-                        </div>
-                    ) : (
-                        <>
-                            <div className="flex md:items-start items-center gap-x-4">
-                                <img
-                                    className="md:w-auto w-auto md:h-[92px] h-[60px] rounded-md"
-                                    src={data?.avatar || 'https://www.w3schools.com/howto/img_avatar.png'}
-                                    alt=""
-                                />
-                                <div className="-space-y-1">
-                                    <div className="md:text-[20px] font-bold">{data.name}</div>
-                                    <div className="md:text-[18px]">{data.email}</div>
-                                    <Link className="md:text-base text-[#F64920] font-semibold text-sm" to={""}>
-                                        Ganti Foto Profil
-                                    </Link>
-                                </div>
-                            </div>
-                            <Divider />
-                            <form onSubmit={submitForm}>
-                                <div className="flex xl:flex-row flex-col xl:items-center gap-y-4 gap-x-4">
-                                    <div className="xl:w-1/3">
-                                        <TextInput label="Nama Lengkap" name="name" value={data.name} />
-                                    </div>
-                                    <div className="xl:w-1/3">
-                                        <TextInput label="E-Mail" name="email" value={data.email} />
-                                    </div>
-                                    <div className="flex xl:w-1/2 w-full gap-x-4">
-                                        <div className="xl:w-1/4 w-1/2">
-                                            <SelectInput name="telp_code" options={[{ label: "+62", value: "id" }]} value="id" />
-                                        </div>
-                                        <div className="w-full">
-                                            <TextInput label="No. Hp" name="telp" value={data.telp} />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="flex justify-end">
-                                    <div className="lg:w-fit w-full py-4">
-                                        <Button type="submit" text="Simpan" variant="success" className="font-normal" />
-                                    </div>
-                                </div>
-                            </form>
-                        </>
-                    )}
+                    <ProfileForm
+                        data={data}
+                        onSubmit={submitForm}
+                        success={success}
+                        isLoading={isLoading}
+                    />
                 </div>
             </div>
         </MainLayout>

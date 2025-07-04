@@ -3,7 +3,7 @@ import { NavbarLayout } from '../../layout/Navbar'
 import { PiSignOutBold } from 'react-icons/pi'
 import { useEffect, useState } from 'react'
 import { Button } from '../button/Button'
-import { DeleteRequest, GetRequest } from '../../utils/request'
+import { DeleteRequest, GetRequest } from '../../services/api'
 
 export const MainNavbar = () => {
     const [isDropdown, setIsDropdown] = useState(false)
