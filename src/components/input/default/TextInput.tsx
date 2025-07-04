@@ -20,7 +20,7 @@ export const TextInput = (props: TextInputProps) => {
                 {required && <span className="text-red-500"> *</span>}
             </label>}
             <div className="flex items-center w-full border px-4 py-2 rounded-md">
-                <input className="outline-none w-full" type={type} name={name}
+                <input className="outline-none w-full" type={type} name={name} defaultValue={props.value}
                     id={name} />
             </div>
         </div>

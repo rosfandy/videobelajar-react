@@ -17,7 +17,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ success, setSuccess }) => {
     const dispatch = useAppDispatch();
     const { data, loading } = useAppSelector((state) => state.api);
     const token = sessionStorage.getItem("token");
-
+    console.log(data)
     const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
