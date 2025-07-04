@@ -8,7 +8,7 @@ import { Divider } from "../components/divider/Divider";
 import { useNavigate } from "react-router-dom";
 import { PhoneInput } from "../components/input/default/PhoneInput";
 import { useState } from "react";
-import { PostRequest } from "../utils/request";
+import { PostRequest } from "../services/api";
 
 export default function Register() {
     const navigate = useNavigate();

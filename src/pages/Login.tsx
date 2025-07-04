@@ -7,7 +7,7 @@ import { FormLayout } from "../layout/Form";
 import { Divider } from "../components/divider/Divider";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { GetRequest } from "../utils/request";
+import { GetRequest } from "../services/api";
 
 export default function Login() {
     const [success, setSuccess] = useState('')
