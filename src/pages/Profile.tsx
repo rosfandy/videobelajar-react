@@ -1,41 +1,20 @@
 import { useEffect, useState } from "react";
 import { MainLayout } from "../layout/Main";
 import { MdBook, MdPerson, MdShoppingBasket } from "react-icons/md";
-import { Link } from "react-router-dom";
-import { Divider } from "../components/divider/Divider";
-import { TextInput } from "../components/input/floating-label/TextInput";
-import { Button } from "../components/button/Button";
-import { SelectInput } from "../components/input/floating-label/SelectInput";
-import { GetRequest, PutRequest } from "../services/api";
+import { useAppDispatch } from "../store/hook";
+import { fetchData } from "../slices/apiSlice";
 import ProfileForm from "../components/form/Form";
 
 export default function Profile() {
-    const [data, setData] = useState<any>({});
-    const [isLoading, setIsLoading] = useState<boolean>(true);
+    const dispatch = useAppDispatch();
+    const token = sessionStorage.getItem("token");
     const [success, setSuccess] = useState("");
-    const token = sessionStorage.getItem('token');
-
-    const fetchData = async () => {
-        setIsLoading(true);
-        const res = await GetRequest(`/users/${token}`);
-        if (res.status == 200) setData(res?.data);
-        setIsLoading(false);
-    };
 
     useEffect(() => {
-        fetchData();
-    }, []);
-
-    const submitForm = async (e: any) => {
-        e.preventDefault();
-        const formData = new FormData(e.target);
-        const payload = Object.fromEntries(formData);
-        const res = await PutRequest(`/users/${token}`, payload);
-        if (res.status == 200) setSuccess("Profil berhasil diubah");
-        setTimeout(() => {
-            setSuccess("");
-        }, 1000);
-    };
+        if (token) {
+            dispatch(fetchData({ path: `/users/${token}`, token }));
+        }
+    }, [dispatch, token]);
 
     return (
         <MainLayout>
@@ -62,12 +41,7 @@ export default function Profile() {
                 </div>
 
                 <div className="w-full bg-white border h-fit p-8 border-[#3A35411F] rounded-md">
-                    <ProfileForm
-                        data={data}
-                        onSubmit={submitForm}
-                        success={success}
-                        isLoading={isLoading}
-                    />
+                    <ProfileForm success={success} setSuccess={setSuccess} />
                 </div>
             </div>
         </MainLayout>
